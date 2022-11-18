@@ -13,14 +13,13 @@ from file_system import getCsvToBase64, getPdfToBase64, crear_directorio
 
 
 # C:\DocJairo\desarrollo\consumirApiPy\ve_cons\Scripts\activate
-# ojo, actualizar la tarea --> "tarea":"radicarAcuseConProceso"
+# ojo, actualizar la tarea --> "tarea":"radicarAcuseSinProceso"
 
-
-class acusar_con_proceso(object):
+class acusar_sin_proceso(object):
     """Obtiene los pdfs de una solicitud de radicaciones"""
 
     def __init__(self):
-        # super(acusar_con_proceso, self).__init__()
+        # super(acusar_sin_proceso, self).__init__()
         crear_directorio("logs")
         self.path_logs = "logs/"
         crear_directorio("pdfs")
@@ -28,7 +27,7 @@ class acusar_con_proceso(object):
         # Para que funcionen los hilos NLS_LANG
         os.environ["NLS_LANG"] = "SPANISH_SPAIN.UTF8"
         load_dotenv()
-        file_log = "acusar_con_proceso-" + str(date.today()) + ".log"
+        file_log = "acusar_sin_proceso-" + str(date.today()) + ".log"
         UtilLog.get_instance().set_file_name(self.path_logs + file_log)
 
         self.file_csv = "cargue_masivo.csv"
@@ -53,18 +52,18 @@ class acusar_con_proceso(object):
     Lista = []
 
     def __str__(self):
-        return "acusar_con_proceso Singleton "
+        return "acusar_sin_proceso Singleton "
 
     def __new__(cls):
-        if not acusar_con_proceso.__instance:
-            acusar_con_proceso.__instance = object.__new__(cls)
-        return acusar_con_proceso.__instance
+        if not acusar_sin_proceso.__instance:
+            acusar_sin_proceso.__instance = object.__new__(cls)
+        return acusar_sin_proceso.__instance
 
     @staticmethod
     def get_instance():
-        if not acusar_con_proceso.__instance:
-            acusar_con_proceso.__instance = acusar_con_proceso()
-        return acusar_con_proceso.__instance
+        if not acusar_sin_proceso.__instance:
+            acusar_sin_proceso.__instance = acusar_sin_proceso()
+        return acusar_sin_proceso.__instance
 
     def generar_resumen(self):
         # UtilLog.get_instance().write(f"generar_resumen INICIO ")
@@ -109,7 +108,7 @@ class acusar_con_proceso(object):
 
     def enviar_registro_y_adjunto(self, payload):
         # UtilLog.get_instance().write(f"enviar_registro_y_adjunto payload ")
-        endpoint = admin_user.get_instance().url + "acusar_con_proceso/"
+        endpoint = admin_user.get_instance().url + "acusar_sin_proceso/"
         token = "Token " + admin_user.get_instance().get_token()
         # print(f"enviar_registro_y_adjunto " + "b" * 10)
         # token='Token c3a16a55b7ebdc559c65a0e17c58197dc719061f'
@@ -159,29 +158,38 @@ class acusar_con_proceso(object):
         try:
             radicado_id = columnas[0][0]  # 0
         except Exception as e:
-            UtilLog.get_instance().write(f"get_json_datos_registro radicado_id {e}")
+            UtilLog.get_instance().write(f"get_json_datos_registro radicado_id(solicitud_id) {e}")
         try:
-            fecha_radicacion = columnas[0][1]  # 
+            proceso_id = columnas[0][1]  # 
+        except Exception as e:
+            UtilLog.get_instance().write(f"get_json_datos_registro proceso_id(identificador) {e}")
+        try:
+            despacho_id = columnas[0][2]  # 
+        except Exception as e:
+            UtilLog.get_instance().write(f"get_json_datos_registro despacho_id {e}")
+        try:
+            fecha_radicacion = columnas[0][3]  # 
         except Exception as e:
             UtilLog.get_instance().write(f"get_json_datos_registro fecha_radicacion {e}")
         try:
-            folios_dependiente = columnas[0][2]  # 
+            folios_dependiente = columnas[0][4]  # 
         except Exception as e:
             UtilLog.get_instance().write(f"get_json_datos_registro folios_dependiente {e}")
         try:
-            costo_impresion = columnas[0][3]  # 
+            costo_impresion = columnas[0][5]  # 
         except Exception as e:
             UtilLog.get_instance().write(f"get_json_datos_registro costo_impresion {e}")
-
 
         datos = {
             "masivo_file_id": self.masivo_file_id,
             "numero_registro": numero_fila,
             "radicado_id": radicado_id,  # 0,
+            "proceso_id": proceso_id,  # 0,
+            "despacho_id": despacho_id,  # 0,
             "fecha_radicacion": fecha_radicacion,  # "31/03/2022",
             "folios_dependiente": folios_dependiente,  # "1",
             "costo_impresion": costo_impresion,  # "0",
-            "creado_desde": "api-acusar_con_proceso",
+            "creado_desde": "api-acusar_sin_proceso",
             "username": admin_user.get_instance().username,  # "JVEGA",
             "archivo_name": file_name,  # "algun_nombre.pdf or .zip",
             "archivo_64": file_64,
@@ -280,7 +288,7 @@ class acusar_con_proceso(object):
                 self.add_registros_y_adjuntos(dato)
 
     def get_lista_registros_csv(self):
-        # print(f"get_lista_registros_csv")
+        print(f"get_lista_registros_csv: {self.file_csv}")
         lista = []
         i = 0
         with open(self.file_csv, encoding="UTF-8") as fname:
@@ -329,7 +337,7 @@ class acusar_con_proceso(object):
             "username": admin_user.get_instance().username,
             "archivo_name": "cargue_masivo_" + str(secuencia) + ".csv",
             "archivo_csv_64": csv_base_64,
-            "tarea":"radicarAcuseConProceso"
+            "tarea":"radicarAcuseSinProceso"
             # "archivo_csv_64": "YXJjaGl2b19jc3ZfNjQ="
         }
 
@@ -412,4 +420,4 @@ class acusar_con_proceso(object):
             UtilLog.get_instance().write("-------------------------------------------------------------")
 
 
-acusar_con_proceso().run()
+acusar_sin_proceso().run()
