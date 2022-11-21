@@ -1,18 +1,27 @@
 # Acuse masivo de solicitudes de Radicaciones
 > Aplicacion cliente que consume un servicio de la api de litigar, para cargar los acuses masivos de solicitudes de radicaciones con y sin procesos en vigilancia.
-## 1 Instalación
-[![Alt text](https://img.youtube.com/vi/IuKBZi6Q6T8/0.jpg)](https://www.youtube.com/watch?v=IuKBZi6Q6T8)
-## 2 Configuración 
-[![Alt text](https://img.youtube.com/vi/huBIRNwKX2w/0.jpg)](https://www.youtube.com/watch?v=huBIRNwKX2w)
-## 3 Ejecución - Acuse con Proceso
-[![Alt text](https://img.youtube.com/vi/QhFxCcpSfsg/0.jpg)](https://www.youtube.com/watch?v=QhFxCcpSfsg)
-## 4 Ejecución - Acuse sin Proceso
-[![Alt text](https://img.youtube.com/vi/QhFxCcpSfsg/0.jpg)](https://www.youtube.com/watch?v=QhFxCcpSfsg)
+## 1 Instalación de python
+[![Alt text](https://img.youtube.com/vi/Ej0b1Wio2AU/0.jpg)](https://www.youtube.com/watch?v=Ej0b1Wio2AU)
+## 2 Descargar app, descomprimir y ubicar en una ruta
+[![Alt text](https://img.youtube.com/vi/RQw9MFQG9Fg/0.jpg)](https://www.youtube.com/watch?v=RQw9MFQG9Fg)
+## 3 Instalar entorno virtual 
+[![Alt text](https://img.youtube.com/vi/-QqdtczrN9s/0.jpg)](https://www.youtube.com/watch?v=-QqdtczrN9s)
+## 4 Instalar Requirements 
+[![Alt text](https://img.youtube.com/vi/_b64biBNFfI/0.jpg)](https://www.youtube.com/watch?v=_b64biBNFfI)
+## 5 Configuración Env
+[![Alt text](https://img.youtube.com/vi/lMfY40OP-YM/0.jpg)](https://www.youtube.com/watch?v=lMfY40OP-YM)
+## 6 Ejecución - Acuse con Proceso
+[![Alt text](https://img.youtube.com/vi/0UhUzwolmbE/0.jpg)](https://www.youtube.com/watch?v=0UhUzwolmbE)
+## 7 Ejecución - Acuse sin Proceso
+[![Alt text](https://img.youtube.com/vi/xuWZQdkiReI/0.jpg)](https://www.youtube.com/watch?v=xuWZQdkiReI)
+## 8 Actualizaciones
+[![Alt text](https://img.youtube.com/vi/gft-8KIWesk/0.jpg)](https://www.youtube.com/watch?v=gft-8KIWesk)
 # Versionamiento
 - Fecha primera versión: 21/11/2022
 * Python >3.6.2 +
 # Instalación
 ## 1. Instale python desde la siguiente ruta:
+Pasos a seguir, si no tiene instalado python en su pc
 > https://www.python.org/downloads/
 ## 2. Descargue y Descomprima el proyecto
 - Descargue el proyecto desde github, ya sea desde un archivo zip (descomprímirlo) o por github
