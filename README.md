@@ -58,9 +58,9 @@ Con el entorno virtual activo ejecute el siguiente comando
 ## 1. Ingreso de registros para cargar los acuses
 - En el archivo plano cargue_masivo.csv se deben colocar los registros con los cuales se van a cargar los acuses.
 - Estructura del Archivo de Cargue: Delimitador punto y coma (;) La primera fila del archivo no se va a procesar, contiene los títulos de los campos.:
-> - Estructura archivo para acuse de procesos EN vigilancia
+- Estructura archivo para acuse de procesos EN vigilancia
 > SOLICITUD_ID; FECHA_RADICACION;CANTIDAD_FOLIOS;COSTO_IMPRESION
-> - Estructura archivo para acuse de procesos SIN vigilancia
+- Estructura archivo para acuse de procesos SIN vigilancia
 > SOLICITUD_ID;IDENTIFICADOR; DESPACHO_ID;FECHA_RADICACION;CANTIDAD_FOLIOS;COSTO_IMPRESION
 - En cada fila del archivo se debe ingresar un numero de solicitud.
 - Los datos en las campos (columnas) no debe contener el caracter punto y coma ';' pues éste es el separador de columnas.
@@ -112,7 +112,5 @@ En la terminal, ejecute el siguiente comando
 - Si al realizar una ejecución sale un error y no se crean las solicitudes, intente de nuevo la ejecución.
 - Si el error persiste, informe al administrador (grupo de página)
 
-
 # Modificaciones a la aplicación
-- 29/04/2022: Se agrega procesar desde fila, para evitar procesar todos los registros del archivo, sino poder registrar desde el registro deseado
-- 05/08/2022: Se ingresan los siguientes campos a la estructura de archivo: LOCALIDAD_ORIGEN, DOCUMENTO_DEMANDANTE; DOCUMENTO_DEMANDADO
+- DD/MM/YYYY: 
